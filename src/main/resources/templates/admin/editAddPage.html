@@ -29,32 +29,32 @@
         <!--    </ul>-->
         <div style="float: right">
             <p>էջի լեզուն</p>
-            <select th:field="*{lang}" id="lang" >
+            <select th:field="*{lang}" id="lang">
                 <option value=""> --</option>
                 <option th:each="ln : ${T(com.card.website.domain.Page.Lang).values()}"
                         th:value="${ln}" th:utext="${ln}"/>
             </select>
-            <div class="text-danger" th:if="${#fields.hasErrors('lang')}" th:errors="*{lang}" >Name Error</div>
+            <div class="text-danger" th:if="${#fields.hasErrors('lang')}" th:errors="*{lang}">Name Error</div>
             <p>Մենյուի անվանումը</p>
             <input type="text" th:field="*{menuName}"/>
             <td th:if="${#fields.hasErrors('menuName')}" th:errors="*{menuName}">Name Error</td>
 
             <!--            if pages isn"t exist we in new page mode. so we don,t need menu sequence-->
             <div id="menuSequenceData">
-            <th:block th:if="${pages == null}">
-                <input type="number" th:field="*{menuSequence}" th:value="1" hidden/>
-            </th:block>
-            <th:block th:unless="${pages == null}">
-                <p>Մենյուի դիրքը</p>
-                <select class="custom-select" th:field="*{menuSequence}" multiple>
-                    <option th:each="pg : ${pages}"
-                        th:value="${pg.menuSequence}"
-                        th:text="${pg.menuSequence}==*{menuSequence} ? ${pg.menuSequence}+'․ '+${pg.menuName} + ' իր տեղում պահել' : ${pg.menuSequence}+'․ '+${pg.menuName} + '-ից առաջ'" >
-                    </option>
-                    <option th:value="${#lists.size(pages)} + 1"> կցել վերջում</option>
-                </select>
-            </th:block>
-        </div>
+                <th:block th:if="${pages == null}">
+                    <input type="number" th:field="*{menuSequence}" th:value="1" hidden/>
+                </th:block>
+                <th:block th:unless="${pages == null}">
+                    <p>Մենյուի դիրքը</p>
+                    <select class="custom-select" th:field="*{menuSequence}" multiple>
+                        <option th:each="pg : ${pages}"
+                                th:value="${pg.menuSequence}"
+                                th:text="${pg.menuSequence}==*{menuSequence} ? ${pg.menuSequence}+'․ '+${pg.menuName} + ' իր տեղում պահել' : ${pg.menuSequence}+'․ '+${pg.menuName} + '-ից առաջ'">
+                        </option>
+                        <option th:value="${#lists.size(pages)} + 1"> կցել վերջում</option>
+                    </select>
+                </th:block>
+            </div>
         </div>
 
         <input hidden type="text" th:field="*{id}"/>
@@ -75,7 +75,7 @@
         <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
     </form>
 </div>
-<script>
+<script th:inline="javascript">
     $(document).ready(function () {
         //turning on mce
         $('.editor').summernote();
@@ -85,13 +85,14 @@
             var base_url = window.location.origin;
             var msequence = "";
             // when selected lang is different from current edited page lang > then current menu sequence have noting on other languages sequence
-            if(selectedLang == '[[${page.lang}]]' ){
+            [# th:unless="${pages==null}"]
+            if (selectedLang == '[[${page.lang}]]') {
                 msequence = [[${page.menuSequence}]];
             }
-            $('#menuSequenceData').load(base_url + '/adminpanel/get-sequence?lang=' + selectedLang + '&msequence='+msequence, // url
-            );
+            [/]
         });
-    });
+    })
+    ;
 
 </script>
 </body>

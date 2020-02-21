@@ -47,7 +47,7 @@ public class AdminController {
             page.setEditDate(new Date());
         }
         //if menu sequence isn't changed we dun't push the sequence
-        if (page.getMenuSequence() != pageRepository.findById(page.getId()).get().getMenuSequence()) {
+        if (page.getId()!=null && page.getMenuSequence() != pageRepository.findById(page.getId()).get().getMenuSequence()) {
             pageRepository.pushSequenceOneStep(page.getMenuSequence());
         }
         pageRepository.save(page);
