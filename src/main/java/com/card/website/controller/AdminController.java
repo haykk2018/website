@@ -30,7 +30,7 @@ public class AdminController {
 
         model.put("pages", pages);
 
-        return "/admin/main";
+        return "admin/main";
     }
 
     //      add new page
