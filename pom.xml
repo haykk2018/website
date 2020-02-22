@@ -93,11 +93,6 @@
         <artifactId>postgres-socket-factory</artifactId>
         <version>1.0.15</version>
     </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
-
     <!--database end-->
 <!--    com.example.servingwebcontent.configs.security-->
     <dependency>
