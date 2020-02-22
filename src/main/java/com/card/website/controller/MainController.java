@@ -28,6 +28,6 @@ public class MainController {
         model.put("pages", pages);
 
 
-        return "/page";
+        return "page";
     }
 }
