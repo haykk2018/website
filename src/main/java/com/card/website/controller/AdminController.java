@@ -70,14 +70,15 @@ public class AdminController {
         if (id != null) {
             // if id nul its doing edit
             page = pageRepository.findById(id).get();
-            // pages need for menu sequence
-            Iterable<Page> pages = pageRepository.findByLang(page.getLang(), Sort.by("menuSequence").ascending());
-            model.put("pages", pages);
+
         } else {
             // if isn"t  nul its doing new
             page = new Page();
         }
         model.put("page", page);
+        // pages need for menu sequence
+        Iterable<Page> pages = pageRepository.findByLang(page.getLang(), Sort.by("menuSequence").ascending());
+        model.put("pages", pages);
 
         return "admin/editAddPage";
     }

@@ -28,6 +28,7 @@ public class Page {
     @NotNull
     private Lang lang;
 
+    @NotNull
     private Integer langId;
 
     @Column(name = "begin_date")

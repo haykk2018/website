@@ -21,7 +21,7 @@ public class MainController {
     @GetMapping
     public String pageAdmin(@RequestParam(name = "id", defaultValue = "1") Integer id, @RequestParam(name = "lang", defaultValue = "eng") String lang, Map<String, Object> model, Locale locale) {
 
-        Iterable<Page> pages = pageRepository.findByLang(Page.Lang.valueOf(locale.getLanguage()), Sort.by("menuSequence").ascending());
+        Iterable<Page> pages = pageRepository.findByLangAndHiddenIsFalse(Page.Lang.valueOf(locale.getLanguage()), Sort.by("menuSequence").ascending());
         Page curPage = pageRepository.findByLangAndLangId(Page.Lang.valueOf(locale.getLanguage()),id);
 
         model.put("curPage", curPage);

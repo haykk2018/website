@@ -5,11 +5,11 @@
 <body>
 
 <div th:fragment="menu-sequense">
-    <th:block th:if="${pages == null}">
+    <th:block th:if="${#lists.isEmpty(pages)}">
         <!--        if pages aren't -->
         <input type="number" id="menuSequence" name="menuSequence" th:value="1" hidden/>
     </th:block>
-    <th:block th:unless="${pages == null}">
+    <th:block th:unless="${#lists.isEmpty(pages)}">
         <!--if pages are -->
         <th:block th:unless="${currentMenuSequence == null}">
             <!--        this condition is when edit operation-->
