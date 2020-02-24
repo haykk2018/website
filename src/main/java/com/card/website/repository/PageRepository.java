@@ -20,8 +20,11 @@ public interface PageRepository extends CrudRepository<Page, Integer> {
 
      Page findByLangAndLangId(Page.Lang lang, Integer langId);
 
+     boolean existsByLangAndLangId(Page.Lang lang, Integer langId);
+
+
     @Modifying
-    @Query("update Page p SET p.menuSequence = p.menuSequence+1 WHERE p.menuSequence >=?1")
-    int pushSequenceOneStep(int mSequence);
+    @Query("update Page p SET p.menuSequence = p.menuSequence+1 WHERE p.menuSequence >=?1 AND p.lang = ?2")
+    int pushSequenceOneStep(int mSequence, Page.Lang lang);
 
 }

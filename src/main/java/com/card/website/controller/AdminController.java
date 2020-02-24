@@ -37,6 +37,10 @@ public class AdminController {
     @PostMapping(path = "/add-page")
     public String pageAdd(@Valid Page page, BindingResult bindingResult) {
 
+        //validating unique filds
+        if (pageRepository.existsByLangAndLangId(page.getLang(), page.getLangId())) {
+            bindingResult.rejectValue("langId", "messageCode", "The field must be unique. Page with your value already exist ");
+        }
         if (bindingResult.hasErrors()) {
             return "admin/editAddPage";
         }
@@ -47,8 +51,8 @@ public class AdminController {
             page.setEditDate(new Date());
         }
         //if menu sequence isn't changed we dun't push the sequence
-        if (page.getId()!=null && page.getMenuSequence() != pageRepository.findById(page.getId()).get().getMenuSequence()) {
-            pageRepository.pushSequenceOneStep(page.getMenuSequence());
+        if (page.getId() != null && page.getMenuSequence() != pageRepository.findById(page.getId()).get().getMenuSequence()) {
+            pageRepository.pushSequenceOneStep(page.getMenuSequence(), page.getLang());
         }
         pageRepository.save(page);
         return "redirect:/adminpanel/main";

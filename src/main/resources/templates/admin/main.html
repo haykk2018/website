@@ -37,6 +37,7 @@
             <th scope="col"> Title</th>
             <th scope="col"> Menu Name</th>
             <th scope="col">Page lang</th>
+            <th scope="col">Lang Id</th>
             <th scope="col">Hidden</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -52,6 +53,7 @@
             <td><span th:text="${page.title}"> Title </span></td>
             <td><span th:text="${page.menuName}"> Menu Name </span></td>
             <td><span th:utext="${page.lang}"> page lang </span></td>
+            <td><span th:utext="${page.langId}">lang id</span></td>
             <td><span th:utext="${page.hidden}"> true or false </span></td>
             <td><a href="#" th:href="@{/(id=${page.langId},lang=${page.lang})}"><span class="glyphicon glyphicon-eye-open"> </span></a></td>
             <td><a href="#" th:href="@{new-page(id=${page.id})}"><span class="glyphicon glyphicon-pencil"></span></a>
