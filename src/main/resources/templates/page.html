@@ -3,8 +3,8 @@
 <head>
     <title th:text="${curPage?.title}"></title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta data-th-attr="content=${curPage.keywords}" name="keywords">
-    <meta data-th-attr="content=${curPage.description}" name="description">
+    <meta data-th-attr="content=${curPage?.keywords}" name="keywords">
+    <meta data-th-attr="content=${curPage?.description}" name="description">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/site/template.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -19,7 +19,7 @@
     <p>Ադմինի սկիզբ
         <a th:href="@{main}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-home"></span></a>
     </p>
-    <form th:action="@{add-page}" th:object="${page}" method="post">
+    <form th:action="@{edit-add-page}" th:object="${page}" method="post">
         <ul th:if="${#fields.hasAnyErrors()}" class="alert alert-danger" role="alert">
             <li th:each="err : ${#fields.allErrors()}" th:text="${err}">...</li>
         </ul>

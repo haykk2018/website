@@ -34,11 +34,12 @@ public class AdminController {
     }
 
     //      add new page
-    @PostMapping(path = "/add-page")
+    @PostMapping(path = "/edit-add-page")
     public String pageAdd(@Valid Page page, BindingResult bindingResult) {
 
-        //validating unique filds
-        if (pageRepository.existsByLangAndLangId(page.getLang(), page.getLangId())) {
+        //validating unique fields
+        //if we check it when pages create, isn՛t necessity to check it by edit
+        if (page.getId() == null && pageRepository.existsByLangAndLangId(page.getLang(), page.getLangId())) {
             bindingResult.rejectValue("langId", "messageCode", "The field must be unique. Page with your value already exist ");
         }
         if (bindingResult.hasErrors()) {
@@ -74,9 +75,8 @@ public class AdminController {
         if (id != null) {
             // if id nul its doing edit
             page = pageRepository.findById(id).get();
-
         } else {
-            // if isn"t  nul its doing new
+            // if isn't  nul its doing new
             page = new Page();
         }
         model.put("page", page);
