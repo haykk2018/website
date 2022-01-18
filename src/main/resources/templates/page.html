@@ -33,7 +33,7 @@
             <!--            Lang and login part-->
             <ul class="nav navbar-nav navbar-right">
                 <li th:each="ln : ${T(com.example.byGutierrez.domain.Page.Lang).values()}" th:unless="${ln == curPage.lang}">
-                    <a th:href="@{/(id=${curPage.langId},lang=${ln})}">[[#{lang.__${ln}__}]]</a>
+                    <a th:href="@{/(id=${curPage.langId},lang=${ln})}">[[${ln}]]</a>
                 </li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
