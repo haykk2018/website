@@ -1,0 +1,1 @@
+INSERT INTO public.page (id, begin_date, content, description, edit_date, hidden, keywords, lang, lang_id, menu_name, menu_sequence, title) VALUES (1, '2022-01-18 22:31:40.485000', 18961, 'dfhfds', null, false, 'fdgsf', 0, 12, 'dfb', 1, 'dfhdfs');
