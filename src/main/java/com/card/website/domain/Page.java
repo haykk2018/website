@@ -140,6 +140,6 @@ public class Page {
     }
 
     public enum Lang {
-        arm, rus, eng;
+        arm, rus, eng
     }
 }
