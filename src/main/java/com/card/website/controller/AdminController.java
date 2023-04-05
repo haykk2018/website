@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 @Controller // This means that this class is a Controller
-@RequestMapping(path = "/adminpanel") // This means URL's start with /demo (after Application path)
+@RequestMapping(path = "/adminpanel") // This means URLs start in this Controller Class  with "/adminpanel" + "/methodPahs"
 public class AdminController {
 
     @Autowired
